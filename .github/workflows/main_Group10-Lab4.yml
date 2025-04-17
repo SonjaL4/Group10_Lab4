@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://group10lab4.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_2096b390f73d49c48a448c29ac96fec4 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_fa3b3b3ae88844c49d1cd9f133bab511 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_f87ed5e6e1ed4d5d9848a2a7f7741973 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_6cdd0a26e7a4400bbee01aea63e001e0 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: group10lab4.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_2096b390f73d49c48a448c29ac96fec4 }}/webapp:${{ github.sha }}
+        tags: group10lab4.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f87ed5e6e1ed4d5d9848a2a7f7741973 }}/webapp:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'Group10-Lab4'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d53039b969b64693a3b22a1f12c68089 }}
-        images: 'group10lab4.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_2096b390f73d49c48a448c29ac96fec4 }}/webapp:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_302b7d0e8f64457d8a5f29ca1b927633 }}
+        images: 'group10lab4.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_f87ed5e6e1ed4d5d9848a2a7f7741973 }}/webapp:${{ github.sha }}'
